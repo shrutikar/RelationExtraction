@@ -33,5 +33,9 @@ with existing NLP modules.
 
 ### Paper's approach
 - System is provided with raw sentences marked with the two entities of interest
+- Word embeddings as an initializer (captures latent semantic and syntactic properties)
+- CNN - recognizes specific classes of n-gram and induce more abstract representations.
+- various window size  for convolutional filters (captures wider range of n-grams)
+- 
 
 ### Framework
