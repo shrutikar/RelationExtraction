@@ -1,6 +1,6 @@
 # RelationExtraction
 
-This framework is based on this paper: [https://cs.nyu.edu/~thien/pubs/vector15.pdf](https://cs.nyu.edu/~thien/pubs/vector15.pdf)
+This framework is based on this paper: [Relation Extraction: Perspective from Convolutional Neural Networks](https://cs.nyu.edu/~thien/pubs/vector15.pdf)
 
 Review of the paper:
 
@@ -31,5 +31,7 @@ with existing NLP modules.
 - Induces errors propogation from supervised NLP toolkits.
 - Out of domain data performance loss 
 
+### Paper's approach
+- System is provided with raw sentences marked with the two entities of interest
 
 ### Framework
