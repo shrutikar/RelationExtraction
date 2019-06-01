@@ -13,4 +13,23 @@ This paper - relation extractor based on  complicated feature engineering by int
 		  - pre-trained word embeddings as an initializer on a non-static architecture to improve the performance
 
 		  - unblanced corpus (non-relation examples exceed usual relations.)
+
+### State-of-the-art
+Techniques - feature-based method
+		   - kernel-based method
+
+Uses large body of lingustic analysis and knowledge resources to transform relation mentions into some rich representation to be used by some statistical classifier like SVM or Maximum Entropy.
+			- tokenize
+			- part of speech tagging
+			- chunking
+			- name tagging
+			- parsing
+with existing NLP modules.
+
+#### Problem in State-of-the-art
+
+- Induces errors propogation from supervised NLP toolkits.
+- Out of domain data performance loss 
+
+
 ### Framework
