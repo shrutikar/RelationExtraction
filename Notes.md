@@ -213,3 +213,4 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 # GENERAL POINTS
 
 - decision tree learning, logistic regression, or SVM build the model using the whole dataset at once. Naïve Bayes, multilayer perceptron, SGDClassifier/SGDRegressor, PassiveAggressiveClassifier/PassiveAggressiveRegressor in scikit-learn can be trained iteratively, one batch at a time. Once new training examples are available, you can update the model using only the new data.
+- decision tree learning, SVM, and kNN can be used for both classification and regression.
