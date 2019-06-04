@@ -25,6 +25,9 @@
 - Sometimes difficult in perfectly seperating classes => OUTLIERS
 - HYPERPARAMETER :
 	- Penality for misclassification of training examples of specific classes 
+	- weighting of each class - learning algorithm tries to not make errors in predicting training examples of this class - used when instances are minority in training but would like to avoid missclassfying
+- OUTPUT:
+	- a class
 
 Two main problems:
 - Dealing with noise:
@@ -111,6 +114,9 @@ Logistic Regression - maximize the likelihood of training set according to model
 	- SUM (yi)log(f(x))+(1-yi)log(1-f(xi)) --------------------------------------------- (equi)
 	- Log is strictly increasin function => maximizing function = maximizing arguments
 	- Gradient descent
+- OUTPUT:
+	- score between 0 and 1
+	- how confident the model is about the prediction or as the probability that the input example belongs to a certain class4
 
 ### Logistic Regression vs ID3:
 Logistic Regression - builds parametric model fw,b by finding optimal solution 
@@ -151,6 +157,10 @@ ID3 - optimizes approximately by building non - parametric model fID3(x)= P(y=1|
 			- Eg: entropy = 0 (when all examples in S have the same label) => useless
 			- Eg: entropy = 1 (when exactly one-half of examples in S is labeled with 1)
 	- TO BE READ: how maximize avg log-likelihood
+- OUTPUT:
+	- score between 0 and 1
+	- how confident the model is about the prediction or as the probability that the input example belongs to a certain class4
+
 
 ## KNN
 
@@ -199,3 +209,7 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 ### RMSprop and Adam
 
 - used in NN training
+
+# GENERAL POINTS
+
+- decision tree learning, logistic regression, or SVM build the model using the whole dataset at once. Naïve Bayes, multilayer perceptron, SGDClassifier/SGDRegressor, PassiveAggressiveClassifier/PassiveAggressiveRegressor in scikit-learn can be trained iteratively, one batch at a time. Once new training examples are available, you can update the model using only the new data.
