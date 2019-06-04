@@ -111,4 +111,25 @@ ID3 - optimizes approximately by building non - parametric model fID3(x)= P(y=1|
 	- stop when no split produces a model better than the current one.
 	- To evaluate a good split - ENTROPY - measure of uncertainity about a random variable.
 		- Maximum entropy -> when all random variables have equal probabilities.
-		- ENTROPY = -fID3 log fID3 - (1-fID3)log(1-fID3)
+		- ENTROPY: H(S) = -fID3 log fID3 - (1-fID3)log(1-fID3)
+		- ENTROPY of a split H(S-,S+) = |S-|/|S|* H(S-) + |S+|/|S|* H(S+)
+		- Therefore, at each step/leaf node, find the split that maximizes the entropy or stop.
+		- stops at situation:
+			- all examples are classified correctly
+			- no attribute to split
+			- split reduces entropy less than "epsilon" (hyperparameter)
+			- tree reaches max depth (hyperparameter)
+	- BACKTRACKING - since decision to split is local to iteration, backtracking during search for optimal decision tree -> longer to build
+
+- Mostly widely decision tree learning algorithm - C4.5
+- C4.5 vs ID3 : 
+	- accepts both continuous and discrete features
+	- handles incomplete examples
+	- solves overfitting problem by using a bottom-up technique known as PRUNING.
+		- PRUNING - going back up on tree once created, removing unwanted(no significant contribution to error reduction) branches . 
+			- Eg: entropy = 0 (when all examples in S have the same label) => useless
+			- Eg: entropy = 1 (when exactly one-half of examples in S is labeled with 1)
+	- TO BE READ: how maximize avg log-likelihood
+
+ 
+
