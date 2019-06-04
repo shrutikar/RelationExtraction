@@ -45,7 +45,7 @@ Two main problems:
 	- Without transformation KERNELS -  
 		- RBF kernel - | x-x'|^2/2rho^2
 		- rho (hyperparameter) - decides smooth or curvy decision boundary
-		 
+
 
 ### SVM vs Linear Regression : 
 Decision boundary is chosen in SVM as far as possible while separating two classes
@@ -152,5 +152,50 @@ ID3 - optimizes approximately by building non - parametric model fID3(x)= P(y=1|
 			- Eg: entropy = 1 (when exactly one-half of examples in S is labeled with 1)
 	- TO BE READ: how maximize avg log-likelihood
 
+## KNN
+
+- non-parametric learning method
+- keeps the training data in memory
+- new x comes in test, KNN find k training examples closest to x and returns majority label(classification) or avg label (regression).
+- Distace metric (hyperparameter):
+	- Euclidean	distance
+	- Cosine similarity
+		- measures similarity of direction of two vectors
+		- cosine = 1 => same direction ; angle=0
+		- cosine = 0 => angle = 90
+		- cosine = -1 => opposite direction
+		- cosine * -1 for distance metric
+	- Chebychev distance
+	- Mahalanobis distance
+	- Hamming distance
 
 
+# GRADIENT DESCENT
+
+- iterative optimization algorithm for finding the minimum of a function.
+- start at random point, take steps proportional to negative of gradient of function at the current point.
+- Works for Linear Regression, Logistic Regression, SVM and Neural Network to find optimal parameters.
+- Logistic and SVM optimization criterion -> convex -> only one minimum -> global
+- NN -> not convex -> still good to find a local minimum.
+Step 1 - partial derivatives of all parameters
+step 2 - EPOCHs - one epoch consists of using the training set entirely to update each parameter
+step 3 - Learning rate alpha - controls the size of an update.
+  => w <- w - alpha * partial derivative of line wrt w
+  => b <- b - alpha * partial derivative of line wrt b
+Step 4 - continue updating until convergence ->values for w and b don’t change much after each epoch
+
+### Minibatch stochastic gradient descent (minibatch SGD)
+
+- speeds up the computation by approximating the gradient using smaller batches (subsets) of the training data
+
+### Adagrad
+
+- version of SGD which scales alpha for each parameter according to the history of gradients => alpha is reduced for very large gradients
+
+### Momentum
+
+- helps accelerate SGD by orienting the gradient descent in the relevant direction and reducing oscillations.
+
+### RMSprop and Adam
+
+- used in NN training
