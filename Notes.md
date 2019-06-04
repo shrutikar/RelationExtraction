@@ -24,7 +24,25 @@
 
 - Sometimes difficult in perfectly seperating classes => OUTLIERS
 - HYPERPARAMETER :
-	- Penality for misclassification of training examples of speific classes 
+	- Penality for misclassification of training examples of specific classes 
+
+Two main problems:
+- Dealing with noise:
+	- no hyperplane can perfectly separate positive examples from negative ones
+	- HINGE LOSS FUNCTION : max (0, 1 − yi(wxi − b)).
+		- Hinge loss function = 0 if wxi lies on right side of decision boundary.
+		- Hinge loss function is proportional to distance from decision boundary if wxi lies on wrong side of decision boundary
+	- Minimize this loss function : C||w||** 2 + 1/N X SUM (max (0, 1 − yi(wxi − b)) )
+		- C (hyperparameter) => tradeoff between increasing the size of the decision boundary and ensuring that each xi lies on the correct side of the decision boundary.
+		- high C -> find highest margin -> ignores misclassification 
+		- low C -> fewer misclassification by sacrificing margin size
+	- SVM <--- HARD - MARGIN SVM
+	- SVM + optimization of hinge loss <--- SOFT - MARGIN SVM
+- Dealing with inherit non linearity:
+	- cannot be separated by hyperplane
+	- solution: transform original space into space of higher dimensionality - hopes to be linearly separable in this transformed space
+	- this transformation - during cost function optimization -> KERNEL TRICK
+	- Without transformation KERNELS -  
 
 ### SVM vs Linear Regression : 
 Decision boundary is chosen in SVM as far as possible while separating two classes
@@ -131,5 +149,5 @@ ID3 - optimizes approximately by building non - parametric model fID3(x)= P(y=1|
 			- Eg: entropy = 1 (when exactly one-half of examples in S is labeled with 1)
 	- TO BE READ: how maximize avg log-likelihood
 
- 
+
 
