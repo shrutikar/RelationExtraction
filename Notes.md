@@ -28,10 +28,15 @@
 
 ### SVM vs Linear Regression : 
 Decision boundary is chosen in SVM as far as possible while separating two classes
+
 |  +   /   -
+
 |++   /    - - 
+
 |+   /   - - -
+
 |   /   - -   
+
 |_______________
 
 
@@ -39,9 +44,13 @@ Decision boundary is chosen in SVM as far as possible while separating two class
 Hyperplane is chosen in Linear Regression as close as possible to all training examples.
 
 |   ---/-
+
 |  ---/- - 
+
 |----/- - -
+
 | --/- -   
+
 |_______________
 
 
