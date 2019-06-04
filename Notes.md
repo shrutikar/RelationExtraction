@@ -43,6 +43,9 @@ Two main problems:
 	- solution: transform original space into space of higher dimensionality - hopes to be linearly separable in this transformed space
 	- this transformation - during cost function optimization -> KERNEL TRICK
 	- Without transformation KERNELS -  
+		- RBF kernel - | x-x'|^2/2rho^2
+		- rho (hyperparameter) - decides smooth or curvy decision boundary
+		 
 
 ### SVM vs Linear Regression : 
 Decision boundary is chosen in SVM as far as possible while separating two classes
