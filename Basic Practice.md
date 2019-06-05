@@ -13,4 +13,7 @@
 - standardization as feature => if has extremely high or low values
 - rest cases normalization is preferred
 
-- MISSING VALUES - 
+- MISSING VALUES:
+	- if dataset big => remove that example
+	- use DATA IMPUTATION TECHNIQUE
+- DATA IMPUTATION TECHNIQUE :
