@@ -98,4 +98,60 @@
 	- Mean squared error (MSE) for training separately and testing separately.
 		- if MSE_test > MSE_train => OVERFITTING => Regularize/Hyperparameter tune
 - Classification:
-	- 
+	- CONFUSION MATRIX:
+   p1   p0
+a1 TP   TN
+a0 FP   FN
+	- PRECISION/RECALL:
+		- P = TP/TP+FP
+		- R = TP/TP+FN
+		- high P or high R by:
+			- assigning a higher weighting to the examples of a specific class(SVM)
+			- tuning hyperparameters to maximize precision or recall on the validation set
+			- varying the decision threshold for algorithms that return probabilities of classes(Logistic regression)
+	- ACCURACY:
+		-TP + TN/(TP + TN + FP + FN)
+		- number of correctly classified examples by total number of examples
+	- COST SENSITIVE ACCURACY:
+		- situation in which different classes have different importance
+		- you first assign a cost (a positive number) to both types of mistakes: FP and FN
+		- compute the counts TP, TN, FP, FN as usual and multiply the counts for FP and FN by the corresponding cost before calculating the accuracy 
+	- AUC :
+		- Area Under ROC Curve
+		- ROC curve (receiver operating characteristic)
+		- combination of the true positive rate (defined exactly as recall) and false positive rate (the proportion of negative examples predicted incorrectly)
+		- TPR = TP/(TP + FN)
+		- FPR = TP/(FP + TN)
+		- ROC curves can only be used to assess classifiers that return some confidence score (or a probability) of prediction. For example, logistic regression, neural networks, and decision trees (and ensemble models based on decision trees)
+		- First, discretize the range of the confidence score
+		- a model is [0, 1], then you can discretize it like this: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+		- Then, you use each discrete value as the prediction threshold and predict the labels of examples in your dataset using the model and this threshold
+		- The higher the area under the ROC curve (AUC), the better the classifier
+		- A classifier with an AUC higher than 0.5 is better than a random classifier. If AUC is lower than 0.5, then something is wrong with your model
+
+## HYPERPARAMETER TUNING
+
+- GRID SEARCH :
+	- when you have enough data to have a decent validation set, and number of hyperparameters and their range is not too large
+	- Eg: SVM - C, kernerl
+	- first time applying? -> don't know the range => use logarithmic scale. Eg : C -> [0.001, 0.01, 0.1, 1, 10, 100, 1000].
+	- try each C with three kernels -> linear, RBF
+	- then asses the performance
+- RANDOM SEARCH :
+	- you provide a statistical distribution for each hyperparameter from which values are randomly sampled and set the total number of combinations you want to try.
+- BAYESIAN HYPERPARAMETER OPTIMIZATION :
+	- uses past evaluation results to choose the next values to evaluate.
+	- limit the number of expensive optimizations of the objective function by choosing the next hyperparameter values based on those that have done well in the past
+- GRADIENT BASED TECHNIQUE
+- EVOLUTIONARY OPTIMIZATION TECHNIQUES
+
+## CROSS VALIDATION
+
+- When you don’t have a decent validation set to tune your hyperparameters on
+- you have few training examples => use more data to train the model
+- split only training and testing and use cross-validation on training set
+- First fix hyperparameter value
+- Then you split your training set into several subsets of the same size => k fold
+- use one set as validation and train on others, -> do for all set
+- use metric on each and then average for final 
+- Use grid search with cross-validation
