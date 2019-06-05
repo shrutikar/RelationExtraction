@@ -67,3 +67,35 @@
 - leads to BIAS-VARIANCE TRADEOFF
 - BIAS-VARIANCE TRADEOFF : leads to slightly higher bias but significantly reduces the variance
 - Types: L1 and L2 regularization
+- To create a regularized model - modify the objective function by adding a penalizing term whose value is higher when the model is more complex
+- for linear regression : min[1/N * SUM (fw,b(xi) − yi)^2]
+	- regularized : min[C|w| + 1/N * SUM(fw,b(xi) − yi)^2]
+	- |w| and C are hyperparameters <- control the importance of regularization
+	- C=0 -> original model
+	- C=high -> learning alg tries to set |wj| to small value or 0 => model becomes simpler => underfit
+	- As data analyst -> right C value to increase bias but decrease variance.
+- L1 / LASSO REGULARIZATION:
+	- produses a sparse model (has most of its parameters = 0) when C is large enough
+	- therefore L1 does feature selection
+	- increases model explainability
+- L2 / RIDGE REGULARIZATION :
+	- if your intention is not feature selection but just to maximize the model performance in hold-out set
+	- differentiable i.e., Gradient Descent can be used for optimizing the objective function
+- ELASTIC NET REGULARIZATION:
+	- L1 and L2 combined
+- DROPOUT :
+	- NN
+- BATCH NORMALIZATION :
+	- NN
+- DATA AUGUMENTATION: 
+- EARLY STOPPING: 
+- L1 and L2 used with linear as well as NN which directly minimize the objective function
+
+## MODEL PERFORMANCE
+
+- Regression:
+	- predicted values close to the observed data values
+	- Mean squared error (MSE) for training separately and testing separately.
+		- if MSE_test > MSE_train => OVERFITTING => Regularize/Hyperparameter tune
+- Classification:
+	- 
