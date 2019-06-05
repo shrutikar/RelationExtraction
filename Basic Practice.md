@@ -2,7 +2,7 @@
 
 ## Cleaning
 
-- LOW BIAS - if model predicts the training data well
+- shuffle
 - ONE HOT ENCODING - catogorical data to vector
 - BINNING/BUCKETING - converting numerical features into categorical based on a value range. => one hot encoding vector
 - NORMALIZATION - an actual range of values which a numerical feature can take, into a standard range of values, typically in the interval [−1, 1] or [0, 1]
@@ -31,4 +31,39 @@
 	- large dataset? => incremental learning algorithms
 - Number of features and examples
 	- neural networks and gradient boosting => huge number of examples and features
+	- SVM - limited
+- Nonlinearity of the data
+	- linearly separable? => SVM with linear kernel, logistic or linear regression
+	- else deep NN or ensemble
+- Training speed
+	- NN slow to train
+	- logistic and linear regression or decision trees faster
+	- Random forest with multiple CPU cores
+- Prediction speed
+	- SVMs, linear and logistic regression, and (some types of) neural networks => fast
+	- KNN, very deep or RNN => slow
+- By testing on VALIDATION set
+	- train - validation - test
+	- 70 - 15 - 15
+	- 95 - 2.5 - 2.5 <- big data
+- decide by sklearn's ML algo selection diagram
 
+
+## Underfitting vs Overfitting
+
+- LOW BIAS / OVERFIT / HIGH VARIANCE - model predicts the training data well but fails on testing data
+	- model is too complex for data (eg: tall decision tree or deep NN) => solution - try simpler model : linear instead of polynomial regression, or SVM with a linear kernel instead of RBF, a neural network with fewer layers/units
+	- Too many features but small number of training examples => Reduce the dimensionality of the dataset
+															  => Add more training data
+															  => Regularize the model
+- HIGH BIAS / UNDERFIT / LOW VARIANCE- model makes many mistakes on the training data
+	- model is too simple for the data =>solution - try more complex model
+	- features not informative =>solution - better features
+
+## REGULARIZATION
+
+- prevent overfitting
+- methods that force the learning algorithm to build a less complex model
+- leads to BIAS-VARIANCE TRADEOFF
+- BIAS-VARIANCE TRADEOFF : leads to slightly higher bias but significantly reduces the variance
+- Types: L1 and L2 regularization
