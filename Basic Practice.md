@@ -1,5 +1,7 @@
 # BASIC PRACTICE
 
+## Cleaning
+
 - LOW BIAS - if model predicts the training data well
 - ONE HOT ENCODING - catogorical data to vector
 - BINNING/BUCKETING - converting numerical features into categorical based on a value range. => one hot encoding vector
@@ -17,3 +19,16 @@
 	- if dataset big => remove that example
 	- use DATA IMPUTATION TECHNIQUE
 - DATA IMPUTATION TECHNIQUE :
+	- replacing missing value in the feature with average value of the feature
+	- replacing missing value in the feature with a value outside the normal range of values => learning alg will know to deal with values significantly different from normal range
+	- replacing missing value in the feature with a vlue in the middle of the range => middle vlue will not affect the prediction significantly
+	- Use missing value as target variables for a regression prob.
+- Try several techniques, build several models and select the one that works the best
+
+## Learning Algorithm Selection
+
+- In-memory vs. out-of-memory:
+	- large dataset? => incremental learning algorithms
+- Number of features and examples
+	- neural networks and gradient boosting => huge number of examples and features
+
