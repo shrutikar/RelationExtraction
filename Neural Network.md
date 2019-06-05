@@ -93,3 +93,59 @@ is simply the sum of convolutions of the corresponding patches of individual mat
 	- maxpooling > average pooling
 	- increased accuracy
 	- increases speed of training by reducing the number of parameters
+
+## RNN
+
+- used to label, classify or generate sequence.
+- a sequence is a matrix => each row is a feature vector => order of row matters.
+- To label a sequence is to predict a class for each feature vector in a sequence.
+- To classify a sequence is to predict a class for the entire sequence.
+- To generate a sequence is to output another sequence (of a possibly different length) somehow relevant to the input sequence.
+- Used often in text processing - sentences -> sequence of words/characters. 
+- also in speech processing.
+- Not Feed-forward : contains loops
+- State / Memory of unit : for each neuron/unit in a layer
+- each unit u in each layer l receives two inputs: 
+	- a vector of states from the previous layer l − 1 
+	- the vector of states from this same layer l from the previous time step (memory).
+- each training example is a matrix in which each row is a feature vector 
+- Eg : X = [x1, x2, . . . , xt−1, xt, xt+1, . . . , xlengthX]
+	- If our input example X is a text sentence, then feature vector xt for each t = 1, . . . , lengthX represents a word in the sentence at position t.
+- an input example are “read” by the neural network sequentially in the order of the timesteps
+- TO UPDATE STATE h(t): at each time t : linear combination of input vector and h(t-1)
+	- The linear combination of two vectors is calculated using two parameter vectors wl,u, ul,u and a parameter bl,u
+	- then apply activation function g to the linear combination to obtain h(t)
+	- Typical ACTIVATION g : Tanh
+- OUTPUT -> a vector calculated for the whole layer l at once
+	- we use activation function g2 that takes a vector as input and returns a different vector of the same dimensionality 
+	- The function g2 is applied to a linear combination of the state vector values htl,u calculated using a parameter matrix Vl and a parameter vector cl,u.
+	- Typical ACTIVATION g2 : SOFTMAX FUNCTION
+		- softmax function is a generalization of the sigmoid function to multidimensional outputs
+	- Hyperparameter - dimentionality of V is chosen for multiplication with vector h so that results in vector in same dimensionality with c
+	- Also depends on dimension of label
+- Parameters : wl,u, ul,u, bl,u, Vl,u, and cl,u are computed from the training data using gradient descent with backpropagation 
+- Special backpropogation : BACKPROPOGATION THROUGH TIME
+
+- Problems: 
+	- Tanh and softmax suffer vanishing gradient
+	- handling long-term dependencies
+		- the feature vectors from the beginning of the sequence tend to be “forgotten,” because the state of each unit, which serves as network’s memory
+		- in text or speech processing, the cause-effect link between distant words in a long sentence can be lost
+- GATED RNNs :
+	- Long Short Term Memory : LSTM
+	- Gated Recurrent Unit : GRU
+	- Can store information for future use
+	- reading, writing, and erasure of information stored in each unit is controlled by activation functions that take values in the range (0, 1)
+	- The trained neural network can “read” the input sequence of feature vectors and decide at some early time step t to keep specific information about the feature vectors. That information about the earlier feature vectors can later be used by the model to process the feature vectors from near the end of the input sequence.
+	- Units make decisions about what information to store, and when to allow reads, writes, and erasures. Those decisions are learned from data and implemented through the concept of gates.
+	- minimal gated GRU :
+		- g1 is the tanh activation function, g2 is called the gate function and is implemented as the sigmoid function taking values in the range (0, 1).
+		- input: h(t-1) and xt
+		- If gate is close to 0 => memory cells keep value from previous timestamp h(t-1).
+		- If gate is close to 0 => the value of the memory cell is overwritten by a new value ht
+		- g3 is SOFTMAX
+	- when a network with gated units is trained with backpropagation through time, the gradient does not vanish
+	- bi-directional RNNs
+	- RNNs with attention
+	- sequence-to-sequence RNN
+	- a generalization of RNN is Recursive NN
