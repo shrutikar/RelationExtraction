@@ -311,8 +311,11 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 	- X list of features vectors, Y list of same length label vector
 	- Building handcrafted features is known to be a labor-intensive process that requires a significant level of domain expertise
 - bidirectional deep gated RNN outperformed all
-	- Xi and Yi can have different lengths
-	- machine translation, conversational interfaces (Q and A), text summarization, spelling correction, etc
+
+## Sequence to Sequence learning
+
+- Xi and Yi can have different lengths
+- machine translation, conversational interfaces (Q and A), text summarization, spelling correction, etc
 - seq2seq NN architecture : 2 parts:
 	- ENCODER :
 		- NN that accepts sequential input
@@ -322,5 +325,3 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 	- DECODER :
 		- another NN that takes an embedding as input and is capable of generating a sequence of outputs
 		- To produce a sequence of outputs, the decoder takes a start of sequence input feature vector x(0) (typically all zeroes), produces the first output y(1), updates its state by combining the embedding and the input x(0), and then uses the output y(1) as its next input x(1).
-
-## Sequence to Sequence learning
