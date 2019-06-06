@@ -325,3 +325,10 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 	- DECODER :
 		- another NN that takes an embedding as input and is capable of generating a sequence of outputs
 		- To produce a sequence of outputs, the decoder takes a start of sequence input feature vector x(0) (typically all zeroes), produces the first output y(1), updates its state by combining the embedding and the input x(0), and then uses the output y(1) as its next input x(1).
+	- both encoder and decoder are trained simultaneously
+	- error at decoder is propagated to encoder by backpropagation
+- More accurate predictions can be obtained using an architecture with ATTENTION
+- ATTENTION mechanism is implemented by an additional set of parameters that combine some information from the encoder (list of state vectors of the last recurrent layer from all encoder time steps) and the current state of the decoder to generate the label.
+- => better retention of longterm dependencies than gater units or bidirectional RNN
+
+
