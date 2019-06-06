@@ -214,3 +214,45 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 
 - decision tree learning, logistic regression, or SVM build the model using the whole dataset at once. Naïve Bayes, multilayer perceptron, SGDClassifier/SGDRegressor, PassiveAggressiveClassifier/PassiveAggressiveRegressor in scikit-learn can be trained iteratively, one batch at a time. Once new training examples are available, you can update the model using only the new data.
 - decision tree learning, SVM, and kNN can be used for both classification and regression.
+
+
+
+## Kernel Regression
+
+- Liner regression - but what if not straight line?
+- For D-dimensions, wx + wx^2 + wx^3 + .... + wx^D +b
+- with d>3 finding right polynomial is difficult 
+- non-parametric method => no parameters to learn
+- model based on data itself
+- kernel plays imp role in similarity. 
+- f(x)=1/N SUM(wiyi) for wi = Nk((xi-x)/b)/SUM(k(xi-x)/b)
+- different forms. most used kernel : Gaussian kernel : k(z) = 1/sqrt(2pie) * e^(-z^2/2)
+- b is hyperparameter-> tuned using validation set
+
+## Multiclass classification
+
+- logistic : from binary to multiclass by changing sigmoid to softmax
+- SVM is binary. cannot be naturally extended to multiclass. 
+	- => one vs rest
+
+## One class classification
+
+- unary classification or class modeling
+- tries to identify objects of a specific class among all objects, by learning from a training set containing only the objects of that class
+- Eg: outlier detection, anomaly detection, and novelty detection
+- one-class Gaussian
+	- we model our data as if it came from a Gaussian distribution, more precisely multivariate normal distribution (MND).
+- one-class k-means
+- one-class kNN
+- one-class SVM
+
+## Multilabel classification
+
+- one vs rest
+- algorithms that naturally can be made multiclass (decision trees, logistic regression and neural networks among others) can be applied to multi-label classification problems
+- decide threshold
+- NN trains multi-label cclassification models by using the binary cross-entropy cost function. 
+	- The output layer of the neural network, in this case, has one unit per label
+	- Each unit of the output layer has the sigmoid activation function
+
+## Ensemble Learning
