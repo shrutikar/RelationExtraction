@@ -331,4 +331,11 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 - ATTENTION mechanism is implemented by an additional set of parameters that combine some information from the encoder (list of state vectors of the last recurrent layer from all encoder time steps) and the current state of the decoder to generate the label.
 - => better retention of longterm dependencies than gater units or bidirectional RNN
 
+## ACTIVE LEARNING
+
+## SEMI-SUPERVISED LEARNING
+
+### One-Shot learning
+
+### Zero-Shot Learning
 
