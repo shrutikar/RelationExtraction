@@ -275,4 +275,52 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 
 ## Random Forest
 
-- 
+- Vanilla bagging:
+	- create B random samples Sb of the training set by sampling with replacement and build B decision tree models fb using each sample Sb as the training set and average the prediction (in case of regression) or majority vote (in case of classification) 
+- RF :
+	- modified tree alg which inspects, at each split in the learning process, a random subset of the features
+	- to avoid corelation : if one or a few features are very strong predictors for the target, these features will be selected to split examples in many trees
+	- good models agree on same ones and bad models disagree on different ones. Corelation makes bad models to agree => bad accuracy
+	-HYPERPARAMETER : 
+		- the number of trees, B
+		- the size of the random subset of the features to consider at each split
+	- Reduces VARIANCE by using multiple samples of the same set => low overfitting
+
+## Gradiesnt Boosting
+
+- for regression:
+	- f= f0 + alpha * f1 , alpha = learning rate (hyperparameter)
+	- each additional tree added to the model partially fixes the errors made by the previous trees until the maximum number M (hyperparameter) of trees are combined
+	- why we calculated the gradient in linear regression: we did that to get an idea on where we should move the values of our parameters so that the MSE cost function reaches its minimum. The gradient showed the direction, but we didn’t know how far we should go in this direction, so we used a small step alpha at each iteration and then reevaluated our direction. The same happens in gradient boosting. However, instead of getting the gradient directly, we use its proxy in the form of residuals: they show us how the model has to be adjusted so that the error (the residual) is reduced
+	- HYPERPARAMETERS :
+		- the number of trees
+		- the learning rate
+		- the depth of tree
+	- boosting reduces the bias => low underfitting => but can overfit => fine tuning is required
+- for classification :
+	- prediction of M decision trees is modeled by sigmoid
+- handles huge datasets with large number of features
+- sequential
+
+## SEQUENCE LABELING
+
+- problem of automatically assigning a label to each element of a sequence
+- RNN can be used to label sequences
+- CONDITIONAL RANDOM FIELDS CRF:
+	- Eg: task of NER - 
+	- X list of features vectors, Y list of same length label vector
+	- Building handcrafted features is known to be a labor-intensive process that requires a significant level of domain expertise
+- bidirectional deep gated RNN outperformed all
+	- Xi and Yi can have different lengths
+	- machine translation, conversational interfaces (Q and A), text summarization, spelling correction, etc
+- seq2seq NN architecture : 2 parts:
+	- ENCODER :
+		- NN that accepts sequential input
+		- it can be RNN or CNN or something else
+		- read the input and generate some sort of state (similar to the state in RNN) that can be seen as a numerical representation of the input the machine can work with.
+		- called the embedding of the input
+	- DECODER :
+		- another NN that takes an embedding as input and is capable of generating a sequence of outputs
+		- To produce a sequence of outputs, the decoder takes a start of sequence input feature vector x(0) (typically all zeroes), produces the first output y(1), updates its state by combining the embedding and the input x(0), and then uses the output y(1) as its next input x(1).
+
+## Sequence to Sequence learning
