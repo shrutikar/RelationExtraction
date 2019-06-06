@@ -84,11 +84,20 @@
 - ELASTIC NET REGULARIZATION:
 	- L1 and L2 combined
 - DROPOUT :
-	- NN
+	- Each time you run a training example through the network, you temporarily exclude at random some units from the computation. The higher the percentage of units excluded the higher the regularization effect
+	- add a dropout layer between two successive layers, or you can specify the dropout parameter [0,1] for the layer
 - BATCH NORMALIZATION :
 	- NN
+	- standardizing the outputs of each layer before the units of the subsequent layer receive them as input
+	- results in faster and more stable training, as well as some regularization effect
+	- always insert a batch normalization layer between two layers
 - DATA AUGUMENTATION: 
+	- mostly with images
+	- create synthetic dataset : zooming it slightly, rotating, flipping, darkening, and so on
 - EARLY STOPPING: 
+	- train a neural network by saving the preliminary model after every epoch and assessing the performance of the preliminary model on the validation set
+	- at some point, after some epoch e, the model can start overfitting: the cost keeps decreasing, but the performance of the model on the validation data deteriorates
+	- you can keep running the training process for a fixed number of epochs and then, in the end, you pick the best model. Models saved after each epoch are called checkpoints.
 - L1 and L2 used with linear as well as NN which directly minimize the objective function
 
 ## MODEL PERFORMANCE
@@ -155,3 +164,23 @@ a0 FP   FN
 - use one set as validation and train on others, -> do for all set
 - use metric on each and then average for final 
 - Use grid search with cross-validation
+
+## IMBALANCED DATASET
+
+- SVM :
+	- weights for missclassified (minority) classes
+	- tries harder to correctly classify minority => but now missclassify majority class
+- Oversampling : 
+	- making multiple copies of the example from minority class
+- Undersampling : 
+	- remove examples from majority
+- SMOTE (Synthetic minority oversampling technique) and ADASYN (Adaptice synthetic sampling method) : 
+	- oversample synthetically => sampling feature values of several examples of the minority class and combining them to obtain a new example of that class
+- Decision tree, RF, GB perform well on imbalanced datasets
+
+## COMBINING MODELS
+- averaging
+- voting
+- stacking : If some of your base models return not just a class, but also a score for each class, you can use these values as features too. 
+
+
