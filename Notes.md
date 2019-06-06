@@ -256,3 +256,23 @@ Step 4 - continue updating until convergence ->values for w and b don’t change
 	- Each unit of the output layer has the sigmoid activation function
 
 ## Ensemble Learning
+
+- for more complex algos => deep learning => requires more data. what if less data?
+- boost performance of simple learning algorithms
+- instead of trying to learn one super-accurate model, focuses on training a large number of low-accuracy models and then combining the predictions given by those weak models to obtain a high-accuracy meta-model 
+- Low-accuracy models are usually learned by weak learners
+- weak learner: decision tree => boost by combining large number of trees
+- this combination is based on some sort of weighted voting.
+- methods: 
+	- boosting
+		- by building each new model tries to “fix” the errors which previous models make
+		- built iteratively
+		- Eg: Gradient Boosting
+	- bagging
+		- creating many “copies” of the training data
+		- then apply the weak learner to each copy to obtain multiple weak models and then combine them
+		- Eg: Random forest
+
+## Random Forest
+
+- 
