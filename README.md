@@ -36,6 +36,15 @@ with existing NLP modules.
 - Word embeddings as an initializer (captures latent semantic and syntactic properties)
 - CNN - recognizes specific classes of n-gram and induce more abstract representations.
 - various window size  for convolutional filters (captures wider range of n-grams)
-- 
+- rather than initializing the word embeddings randomly, we use pretrained word embeddings for initialization and optimize both word embeddings and position embeddings as model parameters
 
 ### Framework
+CNN layers:
+1. look-up tables to encode words in sentences by real-valued vectors
+2. convolutional layer to recognize n-grams
+3. pooling layer to determine the most relevant features
+4. a logistic regression layer (a fully connected neural network with a softmax at the end) to perform classification
+
+#### First layer
+- Input : sentences marked with two entity
+- CNNs - work with fixed length inputs => compute the maximal separation between entity mentions linked by a relation and choose an input width greater than this distance.
